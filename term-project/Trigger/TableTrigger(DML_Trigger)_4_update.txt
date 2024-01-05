@@ -1,0 +1,168 @@
+--Trigger to log the modfied records /*테이블의 레코드를 업데이트할 때 LogTable에 내용 기록*/
+use LectureDB
+go
+
+create trigger tr_updateLectureRoom
+on dbo.LectureRoom
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = suser_name();
+set @c3 = 'dbo.LectureRoom';
+set @c4 = 'update';
+select @c5 = LR_id + ', ' + LR_location + ', ' + LR_maximumstudent from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_updateDiscountCoupon
+on dbo.DiscountCoupon
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.DiscountCoupon';
+set @c4 = 'update';
+select @c5 = DC_id + ', ' + Discount_rate + ', ' + convert(varchar, Validity_date) + ', ' + L_id + ', ' + convert(varchar, Registration_date) from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_updateInstructor
+on dbo.Instructor
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Instructor';
+set @c4 = 'update';
+select @c5 = I_id + ', ' + I_name + ', ' + I_office_num + ', ' + I_phone + ', ' + I_email + ', ' + I_career + ', ' + I_field from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_updateLecture
+on dbo.Lecture
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Lecture';
+set @c4 = 'update';
+select @c5 = L_id + ', ' + L_name + ', ' + L_fee + ', ' + convert(varchar, L_startdate) + ', ' + convert(varchar, L_enddate) + ', ' + L_length + ', ' + L_date + ', ' + convert(varchar, L_starttime) + ', ' + convert(varchar, L_endtime) + ', ' + L_numberofstudents + ', ' + L_contents + ', ' + I_id + ', ' + LR_id + ', ' + convert(varchar, SetUp_date) from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_updatePossess
+on dbo.Possess
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Possess';
+set @c4 = 'update';
+select @c5 = DC_id + ', ' + S_id + ', ' + convert(varchar, Possession_date) from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_updateStudent
+on dbo.Student
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Student';
+set @c4 = 'update';
+select @c5 = S_id + ', ' + S_name + ', ' + convert(varchar, S_dateofbirth) + ', ' + S_phone from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_updateTake
+on dbo.Take
+for update
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Take';
+set @c4 = 'update';
+select @c5 = S_id + ', ' + L_id + ', ' + convert(varchar, take_date) from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go

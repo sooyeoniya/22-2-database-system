@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPossess" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="29099938-7025-4cdc-a812-eaf06d0930c1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[select * from Possess]]>
+	</queryString>
+	<field name="DC_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="DC_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="DC_id"/>
+	</field>
+	<field name="S_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="S_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="S_id"/>
+	</field>
+	<field name="Possession_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Possession_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="Possession_date"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="50" width="152" height="30" uuid="01f4989f-8b35-48c4-a486-65e0f20d979d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Possess Data]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="192" height="30" uuid="03f18f3f-d909-4f53-8755-e4047f1ae81a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c7958e80-ab30-4f99-94cd-eaae108c43cd"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Discount Coupon ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="0" width="190" height="30" uuid="df1f0aa7-75e2-4222-ae8c-177f4dada564">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d3db4e3-6f01-4212-934a-605153c62a0d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Student ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="0" width="190" height="30" uuid="b637b77b-f64a-4dc5-b76a-7c2afa4e08ef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="289c66b4-45b3-4d47-9ebf-7902088b6b4b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Possession Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="192" height="30" uuid="6c417015-d33e-498e-a346-9a9de21912a2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c7958e80-ab30-4f99-94cd-eaae108c43cd"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DC_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="0" width="190" height="30" uuid="e9c5ea21-ac51-43ef-adb7-5818a6041bd0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4d3db4e3-6f01-4212-934a-605153c62a0d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{S_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="0" width="190" height="30" uuid="eed21ae6-7bed-48ad-8f2b-a1a32958f3bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="289c66b4-45b3-4d47-9ebf-7902088b6b4b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Possession_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

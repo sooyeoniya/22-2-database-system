@@ -1,0 +1,122 @@
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getTableList') is not null drop function dbo.getTableList;
+GO
+Create function dbo.getTableList()
+Returns table
+As
+Return
+Select * From sys.objects
+Where type = 'U'
+GO
+Select * from dbo.getTableList()
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getPKFK') is not null drop function dbo.getPKFK;
+GO
+Create function dbo.getPKFK()
+Returns table
+As
+Return
+select i.table_name, i.column_name, o.type
+from sys.objects as o, information_schema.key_column_usage as i
+where i.constraint_name = o.name and (o.type = 'PK' or o.type = 'F')
+GO
+Select * from dbo.getPKFK()
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getUDtrigger') is not null drop function dbo.getUDtrigger;
+GO
+Create function dbo.getUDtrigger()
+Returns table
+As
+Return
+Select type, name
+From sys.objects
+Where type = 'tr'
+GO
+Select * from dbo.getUDtrigger()
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getRCtable') is not null drop function dbo.getRCtable;
+GO
+Create function dbo.getRCtable ()
+Returns table
+As
+Return
+Select t.name, s.row_count
+From sys.tables t, sys.dm_db_partition_stats s
+Where t.object_id = s.object_id and t.type_desc = 'USER_TABLE'
+GO
+Select * from dbo.getRCtable()
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getFunctionList') is not null drop function dbo.getFunctionList;
+GO
+Create function dbo.getFunctionList ()
+Returns table
+As
+Return
+Select name as function_name, schema_name(schema_id) as schema_name, type, type_desc
+From sys.objects
+Where type_desc like'%function%'
+GO
+Select * from dbo.getFunctionList()
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getColumnList') is not null drop function dbo.getColumnList;
+go
+
+Create function dbo.getColumnList (@cname varchar(40))
+Returns table
+As
+Return
+select schema_name (schema_id) as schema_name, o.name as object_name, o.type, o.type_desc,
+c.column_id, c.name as column_name, type_name(c.user_type_id) as column_type, c.max_length
+from sys.objects as o, sys.columns as c
+where o.object_id = c.object_id and o.object_id = OBJECT_ID(@cname)
+go
+select * from dbo.getColumnList('Instructor')
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getParameters') is not null drop function dbo.getParameters;
+go
+
+Create function dbo.getParameters (@fname varchar(40))
+Returns table
+As
+Return
+select schema_name (schema_id) as schema_name, o.name as object_name, o.type, o.type_desc,
+p.parameter_id, p.name as parameter_name, type_name(p.user_type_id) as parameter_type,
+p.max_length, p.precision
+from sys.objects as o, sys.parameters as p
+where o.object_id = p.object_id and o.object_id = OBJECT_ID(@fname)
+go
+select * from dbo.getParameters('getColumnList')
+-------------------------------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID ('dbo.getProcedure') is not null drop function dbo.getProcedure;
+GO
+Create function dbo.getProcedure()
+Returns table
+As
+Return
+Select * From sys.objects
+Where type = 'P'
+GO
+Select * from dbo.getProcedure()

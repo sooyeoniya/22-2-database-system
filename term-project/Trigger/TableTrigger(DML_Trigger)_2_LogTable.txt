@@ -1,0 +1,25 @@
+-- Create a table for keeping changes in the tables of the database /*LectureDB에 LogTable 생성*/
+/*
+use DreamHomeDB
+go
+CREATE TABLE LogTable(
+	logdate datetime NOT NULL,
+	logUser varchar(30) NULL,
+	logTableName varchar(50) NULL,
+	logOperation varchar(30) NULL,
+	logRecord varchar(max) NULL
+)
+go
+--drop table LogTable;
+*/
+use LectureDB
+go
+CREATE TABLE LogTable(
+	logdate datetime NOT NULL,
+	logUser varchar(30) NULL,
+	logTableName varchar(50) NULL,
+	logOperation varchar(30) NULL,
+	logRecord varchar(max) NULL
+)
+go
+--drop table LogTable;

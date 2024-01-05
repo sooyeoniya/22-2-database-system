@@ -1,0 +1,25 @@
+use LectureDB
+go
+
+/*시스템 트리거의 TR 확인*/
+create function getTriggers1()
+returns table
+
+return
+select name, type, type_desc, create_date from sys.triggers
+where type = 'TR'
+go
+
+/*시스템 객체의 TR 확인*/
+create function getTriggers2()
+returns table
+
+return
+select name, type, type_desc, create_date from sys.objects
+where type = 'TR'
+go
+
+select * from sys.triggers
+select * from sys.objects
+
+-- 실행 후 'Programmability > Functions > Table-valued Functions' 에서 트리거 확인

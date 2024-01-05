@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportLectureRoom" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9cb6996b-3bfe-458e-8d98-c8f515e4c013">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[select * from LectureRoom]]>
+	</queryString>
+	<field name="LR_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LR_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="LR_id"/>
+	</field>
+	<field name="LR_location" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="LR_location"/>
+		<property name="com.jaspersoft.studio.field.label" value="LR_location"/>
+	</field>
+	<field name="LR_maximumstudent" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="LR_maximumstudent"/>
+		<property name="com.jaspersoft.studio.field.label" value="LR_maximumstudent"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="51" width="202" height="30" uuid="168bd1b0-27a1-4014-af30-6aa6f5406787"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lecture Room Data]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="-22" y="0" width="192" height="30" uuid="7429dc16-209b-441b-81d6-aa567e20c12d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="617332b5-ae25-4e54-be8c-e073bdc19494"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="0" width="190" height="30" uuid="31ad7ece-e655-456a-8408-9863e06ec3fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8c8e3248-866d-42f5-b535-bbbede626063"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="190" height="30" uuid="4fe63b34-acce-41df-8981-90edcc2f1633">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ded48461-ec97-4d00-9b27-399408fca319"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Maximum Student]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="52" splitType="Stretch">
+			<textField>
+				<reportElement x="-22" y="0" width="192" height="30" uuid="ca1681a5-f440-45f3-b75d-b9dfe3907af6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="617332b5-ae25-4e54-be8c-e073bdc19494"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LR_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="170" y="0" width="190" height="30" uuid="7839fbc6-64e3-4a10-b99f-787f7e90ee7c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8c8e3248-866d-42f5-b535-bbbede626063"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LR_location}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="190" height="30" uuid="1a680d93-e4f2-49a5-be3e-32bf1fcd81fe">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ded48461-ec97-4d00-9b27-399408fca319"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LR_maximumstudent}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportTake" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="94ab9f26-d659-4786-89cb-9be14f6c2e52">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Data.jrdax"/>
+	<queryString language="SQL">
+		<![CDATA[select * from Take]]>
+	</queryString>
+	<field name="S_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="S_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="S_id"/>
+	</field>
+	<field name="L_id" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="L_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="L_id"/>
+	</field>
+	<field name="take_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="take_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="take_date"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="52" width="100" height="30" uuid="6055b87d-0c9b-4b79-8f36-074c5e2ebc83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Take Data]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="192" height="30" uuid="7b194e3b-c0cb-41b5-9677-f05a87760fcb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4523b6c-c7d3-423c-8e16-438f8b120b76"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Student ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="0" width="190" height="30" uuid="1b231361-68c9-478a-959a-f0f80a9d6cee">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beb314b7-2413-4e93-8974-6e18bde1a571"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Lecture ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="0" width="190" height="30" uuid="9fbe68da-68a8-4ad5-8219-18c6a84b916e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c06762e-198b-4be6-8054-e27718e68d61"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Take Date]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="192" height="30" uuid="37be36b5-7858-4cb7-b677-902d77d4cfc2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d4523b6c-c7d3-423c-8e16-438f8b120b76"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{S_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="0" width="190" height="30" uuid="88ce386b-faa0-426b-a98b-1414a647cac0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="beb314b7-2413-4e93-8974-6e18bde1a571"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{L_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="0" width="190" height="30" uuid="72030c82-571d-4c3d-b424-95f722db5bce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6c06762e-198b-4be6-8054-e27718e68d61"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{take_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

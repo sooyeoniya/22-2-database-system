@@ -1,0 +1,81 @@
+use LectureDB
+go
+
+IF OBJECT_ID('getSum') IS NOT NULL DROP FUNCTION dbo.getSum;
+GO
+
+create function getSum(@a int=10, @b int=10, @c int=10)
+returns int
+as
+begin
+declare @d as int
+set @d=@a+@b+@c
+return @d
+end;
+go
+
+select dbo.getSum(13, 5, 17)
+-------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID('dbo.CalculateArea') IS NOT NULL DROP FUNCTION dbo.CalculateArea;
+GO
+
+create function dbo.CalculateArea(@radius as float)
+returns float
+as
+begin
+return PI()* power(@radius,2);
+end;
+go
+
+declare @p as float
+set @p=5.8
+select dbo.CalculateArea(@p)
+-------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID('dbo.GetAge') IS NOT NULL DROP FUNCTION dbo.GetAge;
+GO
+
+CREATE FUNCTION dbo.GetAge(@birthdate AS DATE)
+RETURNS INT
+AS
+BEGIN
+RETURN DATEDIFF(year, @birthdate, sysdatetime());
+END;
+GO
+-------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID('dbo.rectangleArea') IS NOT NULL DROP FUNCTION dbo.rectangleArea;
+GO
+
+CREATE FUNCTION dbo.rectangleArea(@Width int, @Height int)
+RETURNS int
+AS
+BEGIN
+RETURN ( @Width * @Height )
+END
+GO
+
+select dbo.rectangleArea(4,8)
+-------------------------------------------------------
+use LectureDB
+go
+
+IF OBJECT_ID('dbo.reverseCustName') IS NOT NULL DROP FUNCTION dbo.reverseCustName;
+GO
+
+CREATE FUNCTION dbo.reverseCustName(@string varchar(100))
+RETURNS varchar(100)
+AS
+BEGIN
+DECLARE @custName varchar(100)
+set @custName = REVERSE(@string)
+RETURN @custName
+END
+go

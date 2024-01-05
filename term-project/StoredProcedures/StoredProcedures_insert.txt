@@ -1,0 +1,91 @@
+use LectureDB
+go
+
+Create procedure sp_addLectureRoom
+@c1 varchar(10),
+@c2 varchar(50),
+@c3 int
+As
+Begin
+Insert into dbo.LectureRoom values(@c1, @c2, @c3)
+End
+Go
+
+Create procedure sp_addInstructor
+@c1 varchar(10),
+@c2 varchar(30),
+@c3 varchar(10),
+@c4 varchar(16),
+@c5 varchar(40),
+@c6 varchar(2000),
+@c7 varchar(50)
+As
+Begin
+Insert into dbo.Instructor values(@c1, @c2, @c3, @c4, @c5, @c6, @c7)
+End
+Go
+
+Create procedure sp_addLecture
+@c1 varchar(10),
+@c2 varchar(30),
+@c3 int,
+@c4 date,
+@c5 date,
+@c6 int,
+@c7 varchar(10),
+@c8 time,
+@c9 time,
+@c10 int,
+@c11 varchar(2000),
+@c12 varchar(10),
+@c13 varchar(10),
+@c14 date
+As
+Begin
+Insert into dbo.Lecture values(@c1, @c2, @c3, @c4, @c5, @c6, @c7, @c8, @c9, @c10, @c11, @c12, 
+@c13, @c14)
+End
+Go
+
+Create procedure sp_addStudent
+@c1 varchar(10),
+@c2 varchar(30),
+@c3 date,
+@c4 varchar(16)
+As
+Begin
+Insert into dbo.Student values(@c1, @c2, @c3, @c4)
+End
+Go
+
+Create procedure sp_addDiscountCoupon
+@c1 int,
+@c2 int,
+@c3 date,
+@c4 varchar(10),
+@c5 date
+As
+Begin
+Insert into dbo.DiscountCoupon values(@c1, @c2, @c3, @c4, @c5)
+End
+Go
+
+Create procedure sp_addTake
+@c1 varchar(10),
+@c2 varchar(10),
+@c3 date
+As
+Begin
+Insert into dbo.Take values(@c1, @c2, @c3)
+End
+Go
+
+Create procedure sp_addPossess
+@c1 int,
+@c2 varchar(10),
+@c3 date
+As
+Begin
+Insert into dbo.Possess values(@c1, @c2, @c3)
+End
+Go

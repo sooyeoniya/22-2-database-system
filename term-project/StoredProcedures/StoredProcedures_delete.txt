@@ -1,0 +1,97 @@
+use LectureDB
+go
+
+Create procedure sp_deleteLectureRoom
+@c1 varchar(10),
+@c2 varchar(50),
+@c3 int
+As
+Begin
+delete from dbo.LectureRoom
+		where LR_id=@c1
+End
+Go
+
+Create procedure sp_deleteInstructor
+@c1 varchar(10),
+@c2 varchar(30),
+@c3 varchar(10),
+@c4 varchar(16),
+@c5 varchar(40),
+@c6 varchar(2000),
+@c7 varchar(50)
+As
+Begin
+delete from dbo.Instructor
+		where I_id=@c1
+End
+Go
+
+Create procedure sp_deleteLecture
+@c1 varchar(10),
+@c2 varchar(30),
+@c3 int,
+@c4 date,
+@c5 date,
+@c6 int,
+@c7 varchar(10),
+@c8 time,
+@c9 time,
+@c10 int,
+@c11 varchar(2000),
+@c12 varchar(10),
+@c13 varchar(10),
+@c14 date
+As
+Begin
+delete from dbo.Lecture
+		where L_id=@c1
+End
+Go
+
+Create procedure sp_deleteStudent
+@c1 varchar(10),
+@c2 varchar(30),
+@c3 date,
+@c4 varchar(16)
+As
+Begin
+delete from dbo.Student
+		where S_id=@c1
+End
+Go
+
+Create procedure sp_deleteDiscountCoupon
+@c1 int,
+@c2 int,
+@c3 date,
+@c4 varchar(10),
+@c5 date
+As
+Begin
+delete from dbo.DiscountCoupon
+		where DC_id=@c1
+End
+Go
+
+Create procedure sp_deleteTake
+@c1 varchar(10),
+@c2 varchar(10),
+@c3 date
+As
+Begin
+delete from dbo.Take
+		where S_id=@c1 and L_id=@c2
+End
+Go
+
+Create procedure sp_deletePossess
+@c1 int,
+@c2 varchar(10),
+@c3 date
+As
+Begin
+delete from dbo.Possess 
+		where DC_id=@c1 and S_id=@c2
+End
+Go

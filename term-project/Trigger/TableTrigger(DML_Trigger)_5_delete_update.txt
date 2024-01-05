@@ -1,0 +1,168 @@
+ /*테이블의 레코드를 삭제 및 업데이트할 때 LogTable에 내용 기록*/
+use LectureDB
+go
+
+create trigger tr_LectureRoom
+on dbo.LectureRoom
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = suser_name();
+set @c3 = 'dbo.LectureRoom';
+set @c4 = 'update/delete';
+select @c5 = LR_id + ', ' + LR_location + ', ' + LR_maximumstudent from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_DiscountCoupon
+on dbo.DiscountCoupon
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.DiscountCoupon';
+set @c4 = 'update/delete';
+select @c5 = DC_id + ', ' + Discount_rate + ', ' + Validity_date + ', ' + L_id + ', ' + Registration_date from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_Instructor
+on dbo.Instructor
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Instructor';
+set @c4 = 'update/delete';
+select @c5 = I_id + ', ' + I_name + ', ' + I_office_num + ', ' + I_phone + ', ' + I_email + ', ' + I_career + ', ' + I_field from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_Lecture
+on dbo.Lecture
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Lecture';
+set @c4 = 'update/delete';
+select @c5 = L_id + ', ' + L_name + ', ' + L_fee + ', ' + L_startdate + ', ' + L_enddate + ', ' + L_length + ', ' + L_date + ', ' + L_starttime + ', ' + L_endtime + ', ' + L_numberofstudents + ', ' + L_contents + ', ' + I_id + ', ' + LR_id + ', ' + SetUp_date from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_Possess
+on dbo.Possess
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Possess';
+set @c4 = 'update/delete';
+select @c5 = DC_id + ', ' + S_id + ', ' + Possession_date from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_Student
+on dbo.Student
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Student';
+set @c4 = 'update/delete';
+select @c5 = S_id + ', ' + S_name + ', ' + S_dateofbirth + ', ' + S_phone from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go
+-----------------------------------------------------------------------------------------
+use LectureDB
+go
+
+create trigger tr_Take
+on dbo.Take
+for update, delete
+as
+begin
+declare
+@c1 datetime,
+@c2 varchar(30),
+@c3 varchar(50),
+@c4 varchar(30),
+@c5 varchar(max);
+set @c1 = getdate();
+set @c2 = SUSER_NAME();
+set @c3 = 'dbo.Take';
+set @c4 = 'update/delete';
+select @c5 = S_id + ', ' + L_id + ', ' + take_date from deleted;
+
+insert into LogTable values(@c1, @c2, @c3, @c4, @c5);
+end
+go

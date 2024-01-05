@@ -1,0 +1,82 @@
+use LectureDB
+go
+
+/*DML Trigger*/
+create trigger myTrigger_D
+on DiscountCoupon
+after insert, delete, update
+as
+begin
+print 'there is a change in DiscountCoupon table '
+end
+go
+
+create trigger myTrigger_I
+on Instructor
+after insert, delete, update
+as
+begin
+print 'there is a change in Instructor table '
+end
+go
+
+create trigger myTrigger_L
+on Lecture
+after insert, delete, update
+as
+begin
+print 'there is a change in Lecture table '
+end
+go
+
+create trigger myTrigger_LR
+on LectureRoom
+after insert, delete, update
+as
+begin
+print 'there is a change in LectureRoom table '
+end
+go
+
+create trigger myTrigger_P
+on Possess
+after insert, delete, update
+as
+begin
+print 'there is a change in Possess table '
+end
+go
+
+create trigger myTrigger_S
+on Student
+after insert, delete, update
+as
+begin
+print 'there is a change in Student table '
+end
+go
+
+create trigger myTrigger_T
+on Take
+after insert, delete, update
+as
+begin
+print 'there is a change in Take table '
+end
+go
+
+------------------------------------------------------------
+/*쿼리문 실행 및 결과 확인*/
+insert into LectureRoom values('LR06', '410', '30')
+update LectureRoom set LR_maximumstudent=LR_maximumstudent-10 where LR_id='LR06'
+delete from LectureRoom where LR_id='LR06'
+
+select * from LectureRoom
+select * from sys.trigger_events
+select * from sys.triggers
+
+SELECT TE.*
+FROM sys.trigger_events AS TE
+JOIN sys.triggers AS T ON T.object_id =TE.object_id
+WHERE T.parent_class = 0 AND T.name = 'myTrigger_LR';
+go
